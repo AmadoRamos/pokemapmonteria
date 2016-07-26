@@ -22,3 +22,15 @@ angular.module('starter', ['ionic'])
     }
   });
 })
+.controller('StarterController', function ($scope) {
+  
+  $scope.reload = function(){
+    console.log('reload');
+    iframe = document.getElementById('ionic_iframe_map');
+    iframe.src = iframe.src;
+  }
+
+})
+.config(function ($sceDelegateProvider) {
+    $sceDelegateProvider.resourceUrlWhitelist(['self', 'https://pokemongomap-amadoramos.c9users.io/']);
+});
