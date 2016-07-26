@@ -93,7 +93,7 @@ angular.module('starter', ['ionic'])
                             zoom: options["zoom"],
                             mapTypeId: google.maps.MapTypeId.ROADMAP,
                             zoomControl: true,
-                            mapTypeControl: true,
+                            mapTypeControl: false,
                             scaleControl: true,
                             streetViewControl: true,
                             rotateControl: true,
