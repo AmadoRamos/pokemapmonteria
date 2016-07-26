@@ -15,55 +15,56 @@
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB16sGmIekuGIvYOfNoW9T44377IU2d2Es"></script>
+
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
-    <style type="text/css">
-      #fullmap2 { height:100%;width:100%;top:0;left:0;position:absolute;z-index:1; }
-</style>
+    <script src="js/controllers.js"></script>
+    <script src="js/directives.js"></script>
   </head>
-  <body ng-app="starter" ng-controller="StarterController" onload="onLoad()"> 
-    <div class="bar bar-header bar-light">
-      <h1 class="title">PokeMap</h1>
+
+  <body ng-app="starter" ng-controller="MapCtrl" onload="onLoad()">
+    <ion-header-bar class="bar-stable">
+      <h1 class="title">PokeMap Montería</h1>
       <a class="button button-icon icon ion-refresh" on-tap="reload()" ></a>
-    </div>
-    <div id="fullmap" style='height:100%;width:100%;top:0;left:0;position:absolute;z-index:1;'></div>
+    </ion-header-bar>
+
+    <ion-content scroll="false">
+      <div id="fullmap" style='height:100%;width:100%;top:0;left:0;position:absolute;z-index:1;'></div>
+    </ion-content>
     <script src="js/jquery.min.js"></script>
-    <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAZzeHhs-8JZ7i18MjFuM35dJHq70n3Hx4" type="text/javascript"></script>
     <script type="text/javascript">
-    var setLabelTime = function(){
-        $('.label-countdown').each(function (index, element) {
-            var disappearsAt = new Date(parseInt(element.getAttribute("disappears-at"))*1000);
-            var now = new Date();
-            
-            var difference = Math.abs(disappearsAt - now);
-            var hours = Math.floor(difference / 36e5);
-            var minutes = Math.floor((difference - (hours * 36e5)) / 6e4);
-            var seconds = Math.floor((difference - (hours * 36e5) - (minutes * 6e4)) / 1e3);
-            
-            if(disappearsAt < now){
-                timestring = "(expired)";
-            } 
-            else {
-                timestring = "(";
-                if(hours > 0)
-                    timestring = hours + "h";
-                
-                timestring += ("0" + minutes).slice(-2) + "m";
-                timestring += ("0" + seconds).slice(-2) + "s";
-                timestring += ")";
-            }
+      var setLabelTime = function(){
+          $('.label-countdown').each(function (index, element) {
+              var disappearsAt = new Date(parseInt(element.getAttribute("disappears-at"))*1000);
+              var now = new Date();
+              
+              var difference = Math.abs(disappearsAt - now);
+              var hours = Math.floor(difference / 36e5);
+              var minutes = Math.floor((difference - (hours * 36e5)) / 6e4);
+              var seconds = Math.floor((difference - (hours * 36e5) - (minutes * 6e4)) / 1e3);
+              
+              if(disappearsAt < now){
+                  timestring = "(expired)";
+              } 
+              else {
+                  timestring = "(";
+                  if(hours > 0)
+                      timestring = hours + "h";
+                  
+                  timestring += ("0" + minutes).slice(-2) + "m";
+                  timestring += ("0" + seconds).slice(-2) + "s";
+                  timestring += ")";
+              }
 
-            $(element).text(timestring)
-        });
-    };
+              $(element).text(timestring)
+          });
+      };
 
-    window.setInterval(setLabelTime, 1000);
-
-  
-  </script>
-
+      window.setInterval(setLabelTime, 1000);
+    </script>
   </body>
 </html>

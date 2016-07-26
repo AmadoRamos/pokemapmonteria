@@ -1,6 +1,10 @@
 /* Empty. Add your own CSS if you like */
 
-html, body {
-	width: 100%;
-	height: 100%;
+map {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.scroll {
+  height: 100%;
 }
