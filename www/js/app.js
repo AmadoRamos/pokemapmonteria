@@ -31,6 +31,3 @@ angular.module('starter', ['ionic'])
   }
 
 })
-.config(function ($sceDelegateProvider) {
-    $sceDelegateProvider.resourceUrlWhitelist(['self', 'https://pokemongomap-amadoramos.c9users.io/']);
-});
