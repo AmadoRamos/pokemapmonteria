@@ -26,8 +26,27 @@ angular.module('starter', ['ionic'])
   
   $scope.reload = function(){
     console.log('reload');
-    iframe = document.getElementById('ionic_iframe_map');
-    iframe.src = iframe.src;
+    __ajax__();
+  }
+
+  onLoad = function () {
+    //src="https://pokemongomap-amadoramos.c9users.io/"
+    //__ajax__();
   }
 
 })
+
+function __ajax__ () {
+  $.ajax({
+       "url":"https://pokemongomap-amadoramos.c9users.io/",
+       success: function(response) {
+        console.log(response);
+        document.getElementById('ionic_iframe_map').innerHTML  = response;
+          
+        },
+        error: function() {
+            //something went wrong, handle the error and display a message
+            alert('Algo salio mal');
+        }
+    });
+}
